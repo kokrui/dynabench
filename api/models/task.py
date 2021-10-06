@@ -601,7 +601,7 @@ class TaskModel(BaseModel):
                         {
                             "id": dataset.id,
                             "name": dataset.name,
-                            "default_weight": dataset.weight,
+                            "default_weight": dataset.default_weight,
                         }
                     )
             dataset_list.sort(key=lambda dataset: dataset["id"])

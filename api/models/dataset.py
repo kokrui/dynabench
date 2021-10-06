@@ -29,8 +29,10 @@ class Dataset(Base):
     source_url = db.Column(db.Text)
     access_type = db.Column(db.Enum(AccessTypeEnum), default=AccessTypeEnum.scoring)
 
-    weight = db.Column(
-        db.SmallInteger, db.CheckConstraint("weight>=0 and weight<=5"), default=5
+    default_weight = db.Column(
+        db.SmallInteger,
+        db.CheckConstraint("default_weight>=0 and default_weight<=5"),
+        default=5,
     )
     # CHECK Constraints currently do nothing in MySQL5.7
     # and are only enforced in MySQL >=8.0.16

@@ -13,8 +13,8 @@ __depends__ = {"20210929_01_AKPlZ-update-qa-f1-threshold-to-0-4"}
 
 steps = [
     step(
-        "ALTER TABLE datasets ADD COLUMN weight SMALLINT DEFAULT 5 "
-        + "CHECK (weight>=0 AND weight<=5)",
-        "ALTER TABLE datasets DROP weight",
+        "ALTER TABLE datasets ADD COLUMN default_weight SMALLINT DEFAULT 5 "
+        + "CHECK (default_weight>=0 AND default_weight<=5)",
+        "ALTER TABLE datasets DROP default_weight",
     )
 ]
