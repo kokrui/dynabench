@@ -39,9 +39,10 @@ def update(credentials, did):
 
     data = bottle.request.json
     for field in data:
-        if field not in ("longdesc", "rid", "source_url", "access_type"):
+        if field not in ("longdesc", "rid", "source_url", "access_type", "weight"):
             bottle.abort(
-                403, """Can only modify longdesc, round, source_url, access_type"""
+                403,
+                """Can only modify longdesc, round, source_url, access_type, weight""",
             )
 
     dm.update(did, data)
@@ -134,6 +135,7 @@ def create(credentials, tid, name):
             access_type=AccessTypeEnum.hidden,
             longdesc=None,
             source_url=None,
+            weight=5,
         ):
             logger.info(f"Registered {name} in datasets db.")
     else:
