@@ -45,6 +45,9 @@ def update(credentials, did):
                 """Can only modify longdesc, round, source_url, access_type, weight""",
             )
 
+    if not (0 <= data.get("weight", 5) <= 5):
+        bottle.abort(400, """weight must be an integer from 0 to 5""")
+
     dm.update(did, data)
     return util.json_encode({"success": "ok"})
 
