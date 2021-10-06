@@ -568,10 +568,6 @@ class TaskModel(BaseModel):
         tasks = [x.to_dict() for x in rows]
         return tasks
 
-    def get_default_dataset_weight(self, task, name):
-        # TODO:  allow this to be settable by the task owner?
-        return 5
-
     def get_default_metric_weight(self, task, field_name, perf_metric_field_name):
         # TODO: allow this to be settable by the task owner?
         if field_name == perf_metric_field_name:
@@ -605,9 +601,7 @@ class TaskModel(BaseModel):
                         {
                             "id": dataset.id,
                             "name": dataset.name,
-                            "default_weight": self.get_default_dataset_weight(
-                                t, dataset.name
-                            ),
+                            "default_weight": dataset.weight,
                         }
                     )
             dataset_list.sort(key=lambda dataset: dataset["id"])
