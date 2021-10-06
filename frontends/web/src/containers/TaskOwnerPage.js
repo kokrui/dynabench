@@ -13,6 +13,7 @@ import Owners from "../components/TaskOwnerPageComponents/Owners";
 import Rounds from "../components/TaskOwnerPageComponents/Rounds";
 import Settings from "../components/TaskOwnerPageComponents/Settings";
 import Datasets from "../components/TaskOwnerPageComponents/Datasets";
+import Weights from "../components/TaskOwnerPageComponents/Weights";
 
 class TaskOwnerPage extends React.Component {
   static contextType = UserContext;
@@ -461,6 +462,10 @@ class TaskOwnerPage extends React.Component {
         href: "#datasets",
         buttonText: "Datasets",
       },
+      {
+        href: "#weights",
+        buttonText: "Weights",
+      },
     ];
 
     return (
@@ -539,6 +544,7 @@ class TaskOwnerPage extends React.Component {
                     }
                   />
                 ) : null}
+                {this.props.location.hash === "#weights" ? <Weights /> : null}
               </>
             ) : (
               this.props.location.hash !== "#settings" &&
