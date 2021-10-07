@@ -420,6 +420,12 @@ class Task(Base):
     has_predictions_upload = db.Column(db.Boolean, default=False)
     predictions_upload_instructions_md = db.Column(db.Text)
 
+    perf_metric_default_weight = db.Column(db.SmallInteger, nullable=False, default=4)
+    throughput_default_weight = db.Column(db.SmallInteger, nullable=False, default=1)
+    memory_default_weight = db.Column(db.SmallInteger, nullable=False, default=1)
+    fairness_default_weight = db.Column(db.SmallInteger, default=1)
+    robustness_default_weight = db.Column(db.SmallInteger, default=1)
+
     def __repr__(self):
         return f"<Task {self.name}>"
 
